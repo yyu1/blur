@@ -12,12 +12,14 @@ Pro blur_image, in_file, out_file, xdim, ydim
 
 	if (file_test(out_file)) then begin
 		print, 'Error: Output file already exists!', out_file
+		exit
 	endif
 
 	;check file size
 	infile_info = file_info(in_file)
 	if ((ulong(xdim)*ydim*4) ne infile_info.size) then begin
 		print, 'Error: Input file size does not match dimensions given.', xdim, ydim, in_file_info.size
+		exit
 	endif
 
 	print, 'Blurring image...'
